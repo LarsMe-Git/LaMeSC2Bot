@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LaMeBotNS;
 using SC2API_CSharp;
 using SC2APIProtocol;
 
@@ -15,7 +16,7 @@ namespace ExampleBot
         private static Race race = Race.Terran;
 
         // Settings for single player mode.
-        private static string mapName = @"InterloperLE.SC2Map";
+        private static string mapName = @"TritonLE.SC2Map";
         private static Race opponentRace = Race.Random;
         private static Difficulty opponentDifficulty = Difficulty.VeryEasy;
 

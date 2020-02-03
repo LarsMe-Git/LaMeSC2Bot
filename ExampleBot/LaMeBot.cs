@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using SC2API_CSharp;
 using SC2APIProtocol;
 
-namespace ExampleBot
+namespace LaMeBotNS
+
 {
     class LaMeBot : Bot
     {
