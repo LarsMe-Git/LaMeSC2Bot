@@ -6,6 +6,7 @@ namespace SC2API_CSharp
 {
     public interface Bot
     {
+        IEnumerable<SC2APIProtocol.Action> OnFrame(ResponseGameInfo gameInfo, ResponseData data, ResponseObservation observation, uint playerId);
         IEnumerable<SC2APIProtocol.Action> OnFrame(ResponseObservation observation);
         void OnEnd(ResponseObservation observation, Result result);
         void OnStart(ResponseGameInfo gameInfo, ResponseData data, ResponseObservation observation, uint playerId, String opponentId);

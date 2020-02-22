@@ -5,7 +5,9 @@ using System.IO;
 using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
+
 using SC2APIProtocol;
+
 
 namespace SC2API_CSharp
 {
@@ -173,6 +175,9 @@ namespace SC2API_CSharp
 
             Response dataResponse = await proxy.SendRequest(gameDataRequest);
 
+          //  Controller.gameInfo = gameInfoResponse.GameInfo;
+          //  Controller.gameData = dataResponse.Data;
+
             bool start = true;
             
             while (true)
@@ -182,6 +187,8 @@ namespace SC2API_CSharp
                 Response response = await proxy.SendRequest(observationRequest);
 
                 ResponseObservation observation = response.Observation;
+
+
 
                 if (observation == null)
                 {
@@ -199,8 +206,9 @@ namespace SC2API_CSharp
                     start = false;
                     bot.OnStart(gameInfoResponse.GameInfo, dataResponse.Data, observation, playerId, opponentID);
                 }
-                
-                IEnumerable<SC2APIProtocol.Action> actions = bot.OnFrame(observation);
+
+                IEnumerable<SC2APIProtocol.Action> actions = bot.OnFrame(gameInfoResponse.GameInfo, dataResponse.Data, observation, playerId);
+               // IEnumerable<SC2APIProtocol.Action> actions = bot.OnFrame(observation);
 
                 Request actionRequest = new Request();
                 actionRequest.Action = new RequestAction();

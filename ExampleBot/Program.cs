@@ -14,6 +14,7 @@ namespace ExampleBot
         // Settings for your bot.
         private static Bot bot = new LaMeBot();
         private static Race race = Race.Terran;
+        public static GameConnection gc;
 
         // Settings for single player mode.
         private static string mapName = @"TritonLE.SC2Map";
@@ -26,8 +27,14 @@ namespace ExampleBot
          */
         static void Main(string[] args)
         {
+
+            gc = new GameConnection();
             if (args.Length == 0)
-                new GameConnection().RunSinglePlayer(bot, mapName, race, opponentRace, opponentDifficulty).Wait();
+            {
+                
+                gc.RunSinglePlayer(bot, mapName, race, opponentRace, opponentDifficulty).Wait();
+            }
+               
             else
                 new GameConnection().RunLadder(bot, race, args).Wait();
         }
