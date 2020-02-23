@@ -19,7 +19,7 @@ namespace ExampleBot
         // Settings for single player mode.
         private static string mapName = @"TritonLE.SC2Map";
         private static Race opponentRace = Race.Random;
-        private static Difficulty opponentDifficulty = Difficulty.VeryEasy;
+        private static Difficulty opponentDifficulty = Difficulty.VeryHard;
 
         /* The main entry point for the bot.
          * This will start the Stacraft 2 instance and connect to it.

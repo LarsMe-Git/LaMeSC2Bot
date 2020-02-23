@@ -38,7 +38,7 @@ namespace LaMeBotNS
 
             if (Controller.frame == 0)
             {
-                Logger.Info("RaxBot");
+                Logger.Info("LaMeBot");
                 Logger.Info("--------------------------------------");
                 Logger.Info("Map: {0}", Controller.gameInfo.MapName);
                 Logger.Info("--------------------------------------");
@@ -60,7 +60,13 @@ namespace LaMeBotNS
             foreach (var rc in resourceCenters)
             {
                 if (Controller.CanConstruct(Units.SCV))
-                    rc.Train(Units.SCV);
+                {
+                    if (Controller.GetTotalCount(Units.SCV) < 18)
+                    {
+                        rc.Train(Units.SCV);
+                    }
+                }
+                    
             }
 
 
@@ -79,7 +85,7 @@ namespace LaMeBotNS
 
             //build up to 4 barracks at once
             if (Controller.CanConstruct(Units.BARRACKS))
-                if (Controller.GetTotalCount(Units.BARRACKS) < 4)
+                if (Controller.GetTotalCount(Units.BARRACKS) < 6)
                     Controller.Construct(Units.BARRACKS);
 
             //train marine
@@ -91,7 +97,7 @@ namespace LaMeBotNS
 
             //attack when we have enough units
             var army = Controller.GetUnits(Units.ArmyUnits);
-            if (army.Count > 20)
+            if (army.Count > 30)
             {
                 if (Controller.enemyLocations.Count > 0)
                     Controller.Attack(army, Controller.enemyLocations[0]);
@@ -144,7 +150,7 @@ namespace LaMeBotNS
 
             if (Controller.frame == 0)
             {
-                Logger.Info("RaxBot");
+                Logger.Info("LaMeBot");
                 Logger.Info("--------------------------------------");
                 Logger.Info("Map: {0}", Controller.gameInfo.MapName);
                 Logger.Info("--------------------------------------");

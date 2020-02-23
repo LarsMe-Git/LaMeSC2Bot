@@ -13,11 +13,11 @@ namespace LaMeBotNS
 {
     class Controller
     {
-        private static readonly int frameDelay = 0;
+        private static readonly int frameDelay = -5;
 
         private static readonly List<SC2APIProtocol.Action> actions = new List<SC2APIProtocol.Action>();
         private static readonly Random random = new Random();
-        private const double FRAMES_PER_SECOND = 22.4;
+        private const double FRAMES_PER_SECOND = 1;
 
         public static ResponseGameInfo gameInfo;
         public static ResponseData gameData;
